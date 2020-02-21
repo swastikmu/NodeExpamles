@@ -18,13 +18,13 @@ var generes = [
 {id: 8 , genere : "Thriller"} 
 
 ];
-
+//get
 app.get('/api/genere', (req, res)=>
 {
 res.send(generes);
 }
 );
-
+//post
 app.post('/api/genere', (req, res) =>
 {
 
@@ -54,7 +54,7 @@ generes.push(oGenere);
 res.status(201).send(oGenere);
 }
 )
-
+//put
 app.put('/api/genere/:id' , (req, res)=>{
 var find = generes.find(c => c.id == req.params.id);
 if (!find) {
@@ -77,7 +77,19 @@ find.genere = req.body.genere;
 res.send(find);
 
 })
+//delete
+app.delete('/api/genere/:id', (req, res) => {
+var find = generes.find(c => c.id == req.params.id);
+if (!find) {
+res.status(400).send("Page not found!");
+return;
+}
+const index = generes.indexOf(find);
 
+generes.splice(index, 1);
+res.send(find);
+
+})
 
 
 
