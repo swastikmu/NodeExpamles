@@ -55,6 +55,29 @@ res.status(201).send(oGenere);
 }
 )
 
+app.put('/api/genere/:id' , (req, res)=>{
+var find = generes.find(c => c.id == req.params.id);
+if (!find) {
+res.status(400).send("Page not found!");
+return;
+}
+
+const schema = {
+    genere: Joi.string().required()
+}
+
+const result = Joi.validate(req.body , schema);
+if (result.error) {
+    res.status(400).send(result.error.details[0].message);
+    return;
+}
+
+
+find.genere = req.body.genere;
+res.send(find);
+
+})
+
 
 
 
