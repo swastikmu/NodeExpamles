@@ -39,7 +39,7 @@ console.log(repos);
 dispRepo();
 //as we see async await is a syntactical sugar on the top of promise. it built on top of promise only as we are using functions which were returning promise
 //instaed of then-catch chain to get rid of call back hell we use await. it makes code looks like synchronous code however it is asynchronous
-
+//to handle error here use try-catch
 
 
 
